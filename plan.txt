@@ -1,1 +1,1 @@
-Bomber ska kollidera med staden och det ska finnas en healthbar. Om det finns mer tid så ska missiler skjutas från något och bomber ska ha trails. Explosioer ska vara bätre.
+Game over och polish

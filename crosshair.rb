@@ -1,10 +1,10 @@
 require 'gosu'
 
 class Crosshair
-    def initialize (x, y)
+    def initialize (h, w)
         @image = Gosu::Image.new("media/crosshair.png")
-        @x = x + @image.width / 2
-        @y = y - @image.height / 2
+        @x = h + @image.width / 2
+        @y = w - @image.height / 2
         
         @speed = 4
     end

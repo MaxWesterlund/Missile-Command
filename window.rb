@@ -8,23 +8,42 @@ class Window < Gosu::Window
         super WIDTH, HEIGHT
 
         self.caption = "Missile Command"
-        
+
+        init_components()
+
+        @game_over = false
+    end
+
+    def init_components
         @crosshair = Crosshair.new(WIDTH / 2, HEIGHT / 2)
         @turrets = Turrets.new
-        @city = City.new(WIDTH, HEIGHT)
-        @bomb_manager = Bomb_Manager.new(WIDTH, HEIGHT, @city)
+        @city = City.new(WIDTH, HEIGHT, self)
+        @BombManager = BombManager.new(WIDTH, HEIGHT, @city)
+    end
+
+    def game_over
+        @game_over = true
     end
 
     def update
-        @crosshair.move
-        @turrets.shoot(@crosshair.x, @crosshair.y)
-        @bomb_manager.update_bombs(@turrets.missiles)
+        if !@game_over
+            @crosshair.move
+            @turrets.shoot(@crosshair.x, @crosshair.y)
+            @BombManager.update_bombs(@turrets.missiles)
+        elsif Gosu::button_down? Gosu::KB_RETURN
+            init_components()
+            @game_over = false
+        end
     end
 
     def draw
-        @crosshair.draw
-        @city.draw
-        @bomb_manager.draw_bombs
-        @turrets.draw
+        if !@game_over
+            @crosshair.draw
+            @city.draw
+            @BombManager.draw_bombs
+            @turrets.draw
+        else
+            
+        end
     end
 end

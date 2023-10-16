@@ -1,12 +1,16 @@
 require 'gosu'
 
-class Bomb_Manager
+class BombManager
     def initialize (w, h, city)
         @width = w
         @height = h
         @city = city
+
+        @damage = 7
+
         @interval = 1000
         @last_spawn_time = 0
+
         @bombs = []
     end
 
@@ -31,6 +35,7 @@ class Bomb_Manager
                 end
             end
             if bomb.y >= @height - @city.height / 2
+                @city.damage(@damage)
                 @bombs.delete_at(index)
             end
             bomb.move
