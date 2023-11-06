@@ -21,7 +21,7 @@ class Bomb
     end
 
     def move
-        @x += @xDir * @speed
+        @x += @xDir * @speed 
         @y += @yDir * @speed
     end
 

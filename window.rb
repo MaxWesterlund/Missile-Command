@@ -18,7 +18,8 @@ class Window < Gosu::Window
         @crosshair = Crosshair.new(WIDTH / 2, HEIGHT / 2)
         @turrets = Turrets.new
         @city = City.new(WIDTH, HEIGHT, self)
-        @BombManager = BombManager.new(WIDTH, HEIGHT, @city)
+        @bomb_manager = BombManager.new(WIDTH, HEIGHT, @city)
+        @game_over_screen = GameOverScreen.new(WIDTH, HEIGHT)
     end
 
     def game_over
@@ -29,7 +30,7 @@ class Window < Gosu::Window
         if !@game_over
             @crosshair.move
             @turrets.shoot(@crosshair.x, @crosshair.y)
-            @BombManager.update_bombs(@turrets.missiles)
+            @bomb_manager.update_bombs(@turrets.missiles)
         elsif Gosu::button_down? Gosu::KB_RETURN
             init_components()
             @game_over = false
@@ -40,10 +41,10 @@ class Window < Gosu::Window
         if !@game_over
             @crosshair.draw
             @city.draw
-            @BombManager.draw_bombs
+            @bomb_manager.draw_bombs
             @turrets.draw
         else
-            
+            @game_over_screen.draw
         end
     end
 end

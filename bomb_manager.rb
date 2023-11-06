@@ -6,7 +6,7 @@ class BombManager
         @height = h
         @city = city
 
-        @damage = 7
+        @damage = 100
 
         @interval = 1000
         @last_spawn_time = 0
