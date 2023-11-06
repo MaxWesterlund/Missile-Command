@@ -16,13 +16,13 @@ class Bomb
         xd = @x_target - @x
         yd = @y_target - @y
         d = Math.sqrt(xd * xd + yd * yd)
-        @xDir = xd / d
-        @yDir = yd / d
+        @x_dir = xd / d
+        @y_dir = yd / d
     end
 
     def move
-        @x += @xDir * @speed 
-        @y += @yDir * @speed
+        @x += @x_dir * @speed 
+        @y += @y_dir * @speed
     end
 
     def draw

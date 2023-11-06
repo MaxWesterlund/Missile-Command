@@ -14,7 +14,7 @@ class Window < Gosu::Window
         @game_over = false
     end
 
-    def init_components
+    private def init_components
         @crosshair = Crosshair.new(WIDTH / 2, HEIGHT / 2)
         @turrets = Turrets.new
         @city = City.new(WIDTH, HEIGHT, self)
